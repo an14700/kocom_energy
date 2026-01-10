@@ -72,10 +72,9 @@ async def async_setup_entry(hass, entry, async_add_entities):
             # 코콤 데이터 API 생성
             api = API(
                 ip=entry.data.get("ip"),
-                username=entry.data.get("username"),
-                password=entry.data.get("password"),
-                fcm=entry.data.get("fcm"),
-                phone=entry.data.get("phone"),
+                port=entry.data.get("port"),
+                auth1=entry.data.get("auth1"),
+                auth2=entry.data.get("auth2")
             )
             
             energy_response_dict = await api.get_energy_data()
@@ -127,8 +126,8 @@ class KocomEnergySensor(CoordinatorEntity, SensorEntity):
         self._entry = entry
         self._sensor_type = sensor_type
         self._name = sensor_data["name"]
-        self._entry_id = f"{DOMAIN}.{entry.data.get('username')}_{self._name.lower().replace(' ', '_')}"
-        self._unique_id = f"{DOMAIN}.{entry.data.get('username')}_{self._name.lower().replace(' ', '_')}"
+        self._entry_id = f"{DOMAIN}.{entry.data.get('auth1')[32:48]}_{self._name.lower().replace(' ', '_')}"
+        self._unique_id = f"{DOMAIN}.{entry.data.get('auth1')[32:48]}_{self._name.lower().replace(' ', '_')}"
         self._device_class = sensor_data["device_class"]
         self._unit_of_measurement = sensor_data["unit_of_measurement"]
         self._state_class = sensor_data["state_class"]
