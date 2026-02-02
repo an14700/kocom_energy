@@ -43,15 +43,15 @@ SENSOR_TYPES = {
     },
     "hot_water": {
         "name": "Kocom Hot Water Usage", 
-        "device_class": "", 
-        "unit_of_measurement": "",
+        "device_class": "water", 
+        "unit_of_measurement": "m³",
         "state_class": "total_increasing",
         "icon": "mdi:water-boiler"
     },
     "heating": {
         "name": "Kocom Heating Usage", 
-        "device_class": "", 
-        "unit_of_measurement": "",
+        "device_class": "energy", 
+        "unit_of_measurement": "MWh",
         "state_class": "total_increasing",
         "icon": "mdi:radiator"
     }
