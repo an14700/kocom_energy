@@ -46,8 +46,8 @@ class API:
             except asyncio.TimeoutError:
                 _LOGGER.error("인증 timeout")
                 return {}
-
-            if auth_response[16:24] == "04000000" and auth_response[24:48]==self.address:
+                                        
+            if auth_response[16:24] == "4c030000" and auth_response[24:48]==self.address:
                 _LOGGER.debug("인증 성공")
 
                 # 인증 정보2 전송
